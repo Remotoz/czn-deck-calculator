@@ -24,7 +24,8 @@ function calculateTotal(): void {
     showResult("⚠️ Please select a tier", "#f0f0f0");
     return;
   }
-
+  
+  const base = getNumber("baseRemovals"); 
   const neutral = getNumber("neutral");
   const forbidden = getNumber("forbidden");
   const monster = getNumber("monster");
@@ -34,9 +35,19 @@ function calculateTotal(): void {
   const removals = clamp(getNumber("removals"), 1, 5);
   const conversion = getNumber("conversion");
 
+  const copyCost = cumulativeCost(copies);
+  const removalCost = cumulativeCost(removals);
+  const baseRemovalCost = cumulativeCost(base, 20);
+
   const saveCap = 30 + 10 * (tier - 1);
   const baseTotal = neutral * CARD_VALUES.neutral + forbidden * CARD_VALUES.forbidden + monster * CARD_VALUES.monster;
-  const totalValue = baseTotal + epiphany * 10 + divine * 10 + conversion * 10 + COST_TABLE[copies] + COST_TABLE[removals];
+  const totalValue = baseTotal + 
+    epiphany * 10 + 
+    divine * 20 + 
+    conversion * 10 + 
+    copyCost +
+    removalCost +
+    baseRemovalCost;
 
   const isWithinCap = totalValue <= saveCap;
   const difference = isWithinCap ? saveCap - totalValue : totalValue - saveCap;
@@ -72,4 +83,13 @@ function showResult(html: string, bgColor: string): void {
     resultDiv.style.backgroundColor = bgColor;
     resultDiv.classList.add("show");
   }
+}
+
+function cumulativeCost(n: number, add?: number): number {
+  let total = 0;
+  for (let i = 1; i <= n; i++) {
+    total += COST_TABLE[i];
+  }
+  if (add) total += add * n; // for base cards +20 each
+  return total;
 }
