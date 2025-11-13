@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save Cap Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💎</text></svg>">
+</head>
+<body>
+  <div class="container">
+    <h1>Save Cap Calculator</h1>
+
+    <!-- Tier selection -->
+    <label for="tier">Select Tier:</label>
+    <select id="tier">
+      <option value="" disabled selected>Choose Tier</option>
+      <script>
+        for (let i = 1; i <= 15; i++) {
+          document.write(`<option value="${i}">${i}</option>`);
+        }
+      </script>
+    </select>
+
+    <!-- Deck composition -->
+    <h2>Deck Composition</h2>
+    <label>Neutral:</label><input type="number" id="neutral" min="0" value="0">
+    <label>Forbidden:</label><input type="number" id="forbidden" min="0" value="0">
+    <label>Monster:</label><input type="number" id="monster" min="0" value="0">
+
+    <!-- Epiphanies -->
+    <h2>Epiphanies</h2>
+    <div class="epiphany-group">
+      <div>
+        <label>Normal Epiphanies:</label>
+        <input type="number" id="epiphany" min="0" value="0">
+      </div>
+      <div>
+        <label>Divine Epiphanies:</label>
+        <input type="number" id="divine" min="0" value="0">
+      </div>
+    </div>
+
+    <!-- Card Adjustments -->
+    <h2>Card Adjustments</h2>
+    <div class="adjustment-group">
+      <div>
+        <label>Card Copies (1–5):</label>
+        <input type="number" id="copies" min="1" max="5" value="1">
+      </div>
+      <div>
+        <label>Card Removals (1–5):</label>
+        <input type="number" id="removals" min="1" max="5" value="1">
+      </div>
+      <div>
+        <label>Conversions:</label>
+        <input type="number" id="conversion" min="0" value="0">
+      </div>
+    </div>
+
+    <button id="calculateBtn">Calculate</button>
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
