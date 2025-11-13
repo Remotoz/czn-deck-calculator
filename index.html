@@ -32,11 +32,11 @@
     <h2>Epiphanies</h2>
     <div class="epiphany-group">
       <div>
-        <label>Normal Epiphanies:</label>
+        <label class="tooltip" data-tooltip="The 8 character base cards have no cost apparently">Neutral/Monster Epiphanies:</label>
         <input type="number" id="epiphany" min="0" value="0">
       </div>
       <div>
-        <label>Divine Epiphanies:</label>
+        <label class="tooltip" data-tooltip="All cards have a divine cost">Divine Epiphanies:</label>
         <input type="number" id="divine" min="0" value="0">
       </div>
     </div>
@@ -53,12 +53,12 @@
         <input type="number" id="conversion" min="0" value="0">
       </div>
       <div>
-        <label>Card Removals (1–5):</label>
-        <input type="number" id="removals" min="0" max="5" value="0">
+        <label class="tooltip"  class="tooltip" data-tooltip="The 8 cards each character has">Char Card Removals (1–5):</label>
+        <input type="number" id="baseRemovals" min="0" max="5" value="0">
       </div>
       <div>
-        <label>Base Card Removals (1–5):</label>
-        <input type="number" id="baseRemovals" min="0" max="5" value="0">
+        <label>Other Card Removals (1–5):</label>
+        <input type="number" id="removals" min="0" max="5" value="0">
       </div>
     </div>
 
